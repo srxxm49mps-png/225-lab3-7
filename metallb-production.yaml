@@ -1,0 +1,23 @@
+# Assigned to Tyler Minter in Evan Kunkel's October 14 Slack spreadsheet.
+# Production uses port 8080; ingress continues serving DEV on port 80.
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: minterjt-production
+  namespace: metallb-system
+spec:
+  autoAssign: false
+  addresses:
+  - 10.48.229.34/32
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: minterjt-production
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - minterjt-production
+  nodeSelectors:
+  - matchLabels:
+      kubernetes.io/hostname: minterjt-fl26-pool1-sfjhj-t2bf2
