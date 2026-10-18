@@ -1,5 +1,5 @@
 # Assigned to Tyler Minter in Evan Kunkel's October 14 Slack spreadsheet.
-# Production uses port 8080; ingress continues serving DEV on port 80.
+# Labs share this assigned IP on separate production ports; DEV uses ingress on port 80.
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
